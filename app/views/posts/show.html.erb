@@ -1,0 +1,97 @@
+<div class="container">
+  <div class="col-xs12 col-md-10 col-md-offset-1">
+  <div id="marco2">
+    <div class="news">
+    <ul>
+      <li>
+        <h5><span class="green2"> <%= @post.paper %></span></h5>
+      </li>
+      <li>
+        <h6><%= @post.try(:created_at).strftime(" %b-%d-%Y") %> </h6>
+      </li>
+    </ul>
+      
+    </div>
+    <div class="img-card">
+        <%= image_tag @post.photo.to_s %>
+      </div>
+      <div class="card-content">
+        <h6 class="category"><%= @post.category %></h6>
+        <h4 class="card-title"><%= @post.title %></h4>
+        <div class="back"><%= @post.description %></div>
+      </div>
+
+      <div class="share">
+        <h5>Comparte: </h5>
+        <div class="social-line" data-buttons="4">
+            
+              <a class="icon-facebook" rel="nofollow"
+              href="http://www.facebook.com/"
+              onclick="popUp=window.open(
+                'http://www.facebook.com/sharer.php?u=<%="#{request.original_url}"%>',
+                'popupwindow',
+                'scrollbars=yes,width=800,height=400');
+              popUp.focus();
+              return false">
+              <i class="fa fa-facebook fa-lg facebook"></i>
+            </a>
+
+
+            <a class="icon-twitter" rel="nofollow"
+            href="http://twitter.com/"
+            onclick="popUp=window.open(
+              'http://twitter.com/intent/tweet?text=\'<%= @post.title %>\' via CollectinPost - <%="#{request.original_url}"%>',
+              'popupwindow',
+              'scrollbars=yes,width=800,height=400');
+            popUp.focus();
+            return false">
+            <i class="fa fa-twitter fa-lg twitter"></i>
+          </a>
+
+
+          <a class="icon-pinterest" rel="nofollow"
+          href="http://www.pinterest.com/"
+          onclick="popUp=window.open(
+            'http://pinterest.com/pin/create/button/?url=<%="#{request.original_url}"%>&amp;media=<%= @post.photo.to_s %>&amp;description=<%= @post.title %>',
+            'popupwindow',
+            'scrollbars=yes,width=800,height=400');
+          popUp.focus();
+          return false">
+          <i class="fa fa-pinterest fa-lg you"></i>
+        </a>
+
+
+        <a class="icon-gplus" rel="nofollow"
+        href="http://www.plus.google.com/"
+        onclick="popUp=window.open(
+          'https://plus.google.com/share?url=<%="#{request.original_url}"%>',
+          'popupwindow',
+          'scrollbars=yes,width=800,height=400');
+        popUp.focus();
+        return false">
+        <i class="fa fa-google-plus fa-lg you"></i>
+      </a>
+
+  </div>
+      </div>
+      <br><br><br>
+            <div class="center">
+      <div class="button button_white button_block">
+        <%= link_to "Ver publicación original", @post.url, :target => "_blank" %>
+      </div>
+      </div>
+      <br><br><br>
+      <hr>
+    </div>
+  </div>
+</div>
+
+
+<% if current_user && current_user.admin? %>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %> 
+<%= link_to 'Destroy', @post, method: :delete, data: { confirm: '¿Estás seguro?' } %>
+
+
+<% end %>
