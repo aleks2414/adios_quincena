@@ -1,6 +1,8 @@
 class Post < ActiveRecord::Base
     searchkick
   belongs_to :user
+  belongs_to :category
+  belongs_to :subcategory
 
     acts_as_taggable
     is_impressionable
