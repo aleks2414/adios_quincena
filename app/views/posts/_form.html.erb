@@ -15,17 +15,18 @@
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>
+
+  <div class="field">
+  <%= f.label :category %><br>
+    <%= f.collection_select(:category_id, Category.all, :id, :name, 
+    { prompt: 'Select a category' }, { id: 'category-select' }) %> <br>
+    <%= f.label :subcategory %><br>
+  <%= f.grouped_collection_select :subcategory_id, Category.all, :subcategories, 
+    :name, :id, :name, { include_blank: 'Select a sub category' }, { id: 'subcategory-select' } %>
+  </div>
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :category %><br>
-    <%= f.select :category, [["México"], ["Economía y Finanzas"], ["Deportes"], ["Espectáculos y Moda"]], {:prompt => 'Selecciona una opción'}, {:required => true}%>
-  </div>
-  <div class="field">
-    <%= f.label :paper %><br>
-   <%= f.select :paper, [["El universal"], ["Reforma"], ["Milenio"], ["Proceso"], ["Publimetro"], ["Excélsior"], ["La Jornada"], ["El Informador"], ["Aristegui Noticias"], ["La Prensa"], ["El Informador"], ["Noticieros Televisa"], ["Azteca Noticias"], ["El Sol de México"], ["Animal Político"], ["Forbes"], ["El Financiero"], ["El Economista"], ["Expansión"], ["Fortuna"], ["Noticias MVS"], [" Alto Nivel"], ["Entrepreneur"], ["Emprendedores"], ["Récord"], ["Televisa Deportes"], ["ESPN Deportes"], ["TDN"], ["Esto"], ["FOX Sports"], ["MedioTiempo"], ["Azteca Deportes"], ["Universo Deportivo"], [" Fútbol Total"], ["Automovil Panamericano"], ["Sport Life"], ["Men’s Health"], ["Motociclismo"], ["Sopitas.com"], ["GQ"], ["Caras"], ["TV Notas"], ["TVyNovelas"], ["Televisa Espectáculos"], ["Hola"], ["Vanidades"], ["Cosmopolitan"], ["Elle"], ["Vogue"], ["People"]], {:prompt => 'Selecciona una opción'}, {:required => true}%>
   </div>
 
   <div class="field">
@@ -33,8 +34,33 @@
     <%= f.text_field :url %>
   </div>
   <div class="field">
-    <%= f.label :photo %><br>
-    <%= f.file_field :photo %>
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="field">
+    <%= f.label :url %><br>
+    <%= f.text_field :url %>
+  </div>
+
+  <div class="field">
+    <%= f.label :url %><br>
+    <%= f.text_field :url %>
+  </div>
+
+  <div class="field">
+    <%= f.label :url %><br>
+    <%= f.text_field :url %>
+  </div>
+
+  <div class="field">
+    <%= f.label :url %><br>
+    <%= f.text_field :url %>
+  </div>
+
+  <div class="field">
+    <%= f.label :url %><br>
+    <%= f.text_field :url %>
   </div>
   <div class="field">
   <%= f.label :tag_list, "Tags (separated by commas)" %><br />

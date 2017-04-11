@@ -3,43 +3,7 @@
 		<div id="formario">
 <h1>Nuevo Post</h1>
 
-<%= form_for(@post) do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-
-  <div class="field">
-    <%= f.label :categoría %><br>
-    <%= f.select :category, [["México"], ["Economía y Finanzas"], ["Deportes"], ["Espectáculos y Moda"]], {:prompt => 'Selecciona una opción'}, {:required => true}%>
-  </div>
-  <div class="field">
-    <%= f.label :paper %><br>
-   <%= f.select :paper, [["El universal"], ["Reforma"], ["Milenio"], ["Proceso"], ["Publimetro"], ["Excélsior"], ["La Jornada"], ["El Informador"], ["Aristegui Noticias"], ["La Prensa"], ["El Informador"], ["Noticieros Televisa"], ["Azteca Noticias"], ["El Sol de México"], ["Animal Político"], ["Forbes"], ["El Financiero"], ["El Economista"], ["Expansión"], ["Fortuna"], ["Noticias MVS"], [" Alto Nivel"], ["Entrepreneur"], ["Emprendedores"], ["Récord"], ["Televisa Deportes"], ["ESPN Deportes"], ["TDN"], ["Esto"], ["FOX Sports"], ["MedioTiempo"], ["Azteca Deportes"], ["Universo Deportivo"], [" Fútbol Total"], ["Automovil Panamericano"], ["Sport Life"], ["Men’s Health"], ["Motociclismo"], ["Sopitas.com"], ["GQ"], ["Caras"], ["TV Notas"], ["TVyNovelas"], ["Televisa Espectáculos"], ["Hola"], ["Vanidades"], ["Cosmopolitan"], ["Elle"], ["Vogue"], ["People"]], {:prompt => 'Selecciona una opción'}, {:required => true}%>
-  </div>
-
-  <div class="field">
-    <%= f.label :url %><br>
-    <%= f.text_field :url %>
-  </div>
-
-  <div class="field">
-  <%= f.label :tag_list, "Tags (separated by commas)" %><br />
-  <%= f.text_field(:tag_list, value: @post.tag_list.join(","))%>
-  </div>
-  <div class="actions">
-    <%= f.submit "Crear Post" %>
-  </div>
-<% end %>
-
+<%= render 'form' %>
 
 <%= link_to 'Atrás', posts_path %>
 </div>

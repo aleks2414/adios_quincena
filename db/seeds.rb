@@ -7,5 +7,15 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-b01= User.create!({:email => "zack@collectinpost", :password => "collectin2016", :password_confirmation => "collectin2016", :admin => true, :name => "Zack" })
-b02= User.create!({:email => "daniel@collectinpost", :password => "collectin2016", :password_confirmation => "collectin2016", :admin => true, :name => "Daniel" })
+b01= User.create!({:email => "carlos@adiosquincena.com", :password => "adiosquincena2016", :password_confirmation => "adiosquincena2016", :admin => true, :name => "Carlos" })
+b02= User.create!({:email => "luis@adiosquincena.com", :password => "adiosquincena2016", :password_confirmation => "adiosquincena2016", :admin => true, :name => "Luis" })
+b03= User.create!({:email => "alex@adiosquincena.com", :password => "adiosquincena2016", :password_confirmation => "adiosquincena2016", :admin => true, :name => "Alex" })
+
+c01= Category.create!({:name => "Regalos para él"})
+c02= Category.create!({:name => "Regalos para ella"})
+c03= Category.create!({:name => "Geek"})
+c04= Category.create!({:name => "Gadgets & Gear"})
+c05= Category.create!({:name => "Regalos para niños"})
+c06= Category.create!({:name => "Casa y Oficina"})
+c07= Category.create!({:name => "Juegos y Juguetes"})
+c08= Category.create!({:name => "Comida y Bebida"})

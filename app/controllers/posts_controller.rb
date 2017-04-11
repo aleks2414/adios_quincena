@@ -133,6 +133,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :description, :date, :category, :paper, :user_id, :favorite, :url, :photo, :tag_list, :slug)
+      params.require(:post).permit(:title, :description, :date, :user_id, :category_id, :subcategory_id, :image, :favorite, :url, :tag_list, :slug, :pro1, :pro2, :pro3, :pro4, :pro5, :con1, :con2, :con3, :con4, :con5, :link_review, :amazon, :calidad, :garantia, :precio, :innovación, :calificacion, :price)
     end
 end
