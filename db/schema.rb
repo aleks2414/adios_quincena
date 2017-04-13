@@ -83,15 +83,15 @@ ActiveRecord::Schema.define(version: 20161229022909) do
     t.string   "con4"
     t.string   "con5"
     t.string   "link_review"
-    t.integer  "amazon"
-    t.integer  "calidad"
-    t.integer  "garantia"
-    t.integer  "precio"
-    t.integer  "innovacion"
+    t.integer  "amazon",         default: 0
+    t.integer  "calidad",        default: 0
+    t.integer  "garantia",       default: 0
+    t.integer  "precio",         default: 0
+    t.integer  "innovacion",     default: 0
     t.integer  "calificacion"
     t.string   "price"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "slug"
   end
 

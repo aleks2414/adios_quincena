@@ -4,7 +4,7 @@
     <div class="news">
     <ul>
       <li>
-        <h5><span class="green2"> <%= @post.paper %></span></h5>
+        <h5><span class="green2"></span></h5>
       </li>
       <li>
         <h6><%= @post.try(:created_at).strftime(" %b-%d-%Y") %> </h6>
@@ -13,10 +13,10 @@
       
     </div>
     <div class="img-card">
-        <%= image_tag @post.photo.to_s %>
+        <%= image_tag @post.image.to_s %>
       </div>
       <div class="card-content">
-        <h6 class="category"><%= @post.category %></h6>
+        <h6 class="category"><%= @post.category.name %></h6>
         <h4 class="card-title"><%= @post.title %></h4>
         <div class="back"><%= @post.description %></div>
       </div>
@@ -52,7 +52,7 @@
           <a class="icon-pinterest" rel="nofollow"
           href="http://www.pinterest.com/"
           onclick="popUp=window.open(
-            'http://pinterest.com/pin/create/button/?url=<%="#{request.original_url}"%>&amp;media=<%= @post.photo.to_s %>&amp;description=<%= @post.title %>',
+            'http://pinterest.com/pin/create/button/?url=<%="#{request.original_url}"%>&amp;media=<%= @post.image.to_s %>&amp;description=<%= @post.title %>',
             'popupwindow',
             'scrollbars=yes,width=800,height=400');
           popUp.focus();

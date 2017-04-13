@@ -1,22 +1,24 @@
 <br><br><br>
 
-<div class="grid visible-md visible-lg">
-<% @posts.each do |post| %>
-  <div class="grid-item">
-    <div id="marco1">
-          <div class="collec">
+
+<div id="tres">
+  <% @posts.each do |post| %>
+    <div class="col-md-4 col-sm-6 nue">
+      <div class="boxes">
+
+      <div class="collec">
             <% if user_signed_in? %>
             <% if current_user.liked? post %>
             <div class="derecho">
               <%= link_to dislike_post_path(post), method: :put do %>
-              <h5>[collect]</h5>
+              <span class="fa fa-star-o"></span>
               <%#= post.get_downvotes.size %>
               <% end %>
             </div>
             <% else %>
             <div class="votable">
               <%= link_to like_post_path(post), method: :put do %>
-              <h5>[collect]</h5>
+              <span class="fa fa-star"></span>
               <%#= post.get_upvotes.size %>
               <% end %>
             </div>
@@ -24,22 +26,49 @@
             <% else %>
             <div class="votable">
               <%= link_to new_user_session_path do %>
-              <h5>[collect]</h5>
+              <span class="fa fa-star-o"></span>
               <% end %>
             </div>
             <% end %>
           </div>
+
+
+          <%= link_to post do %>
+        <div class="imagen">
+          <%= image_tag src="prueba.jpg" %>
+        </div>
+        <h6><%= link_to post.category.name, posts_path(category: post.category.name) %></h6>
+        <h2><%= post.title %></h2>
+        <p><%= post.description.truncate(200) %></p>
+        <h4><%= post.calificacion %></h4>
+        <div class="finales">
+          <ul>
+            <li><h5><span class="fa fa-tasks"></span>45%</h5></li>
+            <li><h5>#<%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join('    #') %></h5></li>
+          </ul>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="grid visible-md visible-lg">
+<% @posts.each do |post| %>
+  <div class="grid-item">
+    <div id="marco1">
+          
           <!-- imagen -->
           <div class="img-card">
             <%= link_to post do %>
-            <%= image_tag post.photo.to_s %>
+            <%= image_tag post.image.to_s %>
             <% end %>
           </div>
           <div class="cate">
             <h6><%= post.category %></h6>
           </div>
           <div class="taging">
-            <h6 class="category">#<%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join('    #') %></h6>
+            
           </div>
           <div class="content">
             <%= link_to post do %>
@@ -50,7 +79,7 @@
           <div class="news">
             <ul>
               <li>
-                <h6 class="green2"><%= post.paper %></h6>
+                <h6 class="green2"><%= post.title %></h6>
               </li>
               <li>
                 <h6><%= post.try(:created_at).strftime(" %b-%d-%Y") %> </h6>
@@ -96,7 +125,7 @@
           <!-- imagen -->
           <div class="img-card">
             <%= link_to post do %>
-            <%= image_tag post.photo.to_s %>
+            <%= image_tag post.image.to_s %>
             <% end %>
           </div>
           <div class="cate">
@@ -114,7 +143,7 @@
           <div class="news">
             <ul>
               <li>
-                <h6 class="green2"><%= post.paper %></h6>
+                <h6 class="green2"><%= post.title %></h6>
               </li>
               <li>
                 <h6><%= post.try(:created_at).strftime(" %b-%d-%Y") %> </h6>
@@ -137,17 +166,4 @@
   </div>
 
   
-
-
-  <br><br>
-  
-
-<script>
-  $('.grid').masonry({
-  // options
-  itemSelector: '.grid-item',
-  columnWidth: 80
-});
-</script>
-
 

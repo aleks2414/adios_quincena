@@ -13,31 +13,13 @@ class PostsController < ApplicationController
 
   end
 
-  def mexico
-    @posts = Post.where(category: "México").order("created_at desc")
-    @posts = @posts.page params[:page]
-  end
+ 
 
   def favorites
     @posts = current_user.find_up_voted_items
   end
 
-  def economia_y_finanzas
-    @posts = Post.where(category: "Economía y Finanzas").order("created_at desc")
-    @posts = @posts.page params[:page]
-  end
 
-  def deportes
-    # @poste = Post.where(category: "Deportes").order("created_at asc").limit(4).offset(4)
-    # @posta = Post.where(category: "Deportes").order("created_at asc").limit(4)
-    @posts = Post.where(category: "Deportes").order("created_at desc")
-    @posts = @posts.page params[:page]
-  end
-
-  def espectaculos_y_moda
-    @posts = Post.where(category: "Espectáculos y Moda").order("created_at desc")
-    @posts = @posts.page params[:page]
-  end
 
   # GET /posts
   # GET /posts.json
@@ -47,9 +29,17 @@ def index
   else
     @posts = Post.order("created_at desc")
   end
-    @posts = @posts.page params[:page]
 
+  if params[:category].blank?
+    @posts = Post.all.order("created_at DESC")
+  else
+    @category_id = Category.find_by(name: params[:category]).id
+    @posts = Post.where(category_id: @category_id).order("created_at DESC")
+  end
+
+  @posts = @posts.page params[:page]
 end
+
 
   # GET /posts/1
   # GET /posts/1.json

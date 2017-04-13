@@ -8,10 +8,6 @@ Rails.application.routes.draw do
     put "dislike", to: "posts#downvote"
   end
     collection do
-      get :mexico
-      get :economia_y_finanzas
-      get :deportes
-      get :espectaculos_y_moda
       get :favorites
     end
   end

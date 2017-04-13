@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Collectin Post</title>
+  <title>Adios quincena</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="https://use.fontawesome.com/8e56b09395.js"></script>
-	<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
 </head>
 <body>
 
@@ -18,93 +17,89 @@
 <% end %>
 
 
-<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-        <i class="fa fa-bars"></i>
-      </button>
-      <a class="navbar-brand page-scroll logo" href="<%= root_path %>">
-        <%= image_tag src="logo.png" %>
-      </a>
-    </div>
+<header class="cd-auto-hide-header">
+  <div class="logo"><a href="#0"><%= image_tag ("logo.png")%></a></div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-      <ul class="nav navbar-nav" id="rompe">
-        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-        <li class="hidden">
-          <a href="#page-top"></a>
-        </li>
-        <li class="<%= 'active' if current_page?(mexico_posts_path) %>">
-          <a href="<%=mexico_posts_path %>">México</a>
-        </li>
-        <li class="<%= 'active' if current_page?(economia_y_finanzas_posts_path) %>">
-          <a href="<%=economia_y_finanzas_posts_path %>">Economía y Finanzas</a>
-        </li>
+  <nav class="cd-primary-nav">
+    <a href="#cd-navigation" class="nav-trigger">
+      <span>
+        <em aria-hidden="true"></em>
+        Menu
+      </span>
+    </a> <!-- .nav-trigger -->
 
-        <li class="<%= 'active' if current_page?(deportes_posts_path) %>">
-          <a href="<%=deportes_posts_path %>" class= "white">Deportes</a>
-        </li>
-        <li class="<%= 'active' if current_page?(espectaculos_y_moda_posts_path) %>">
-          <a href="<%=espectaculos_y_moda_posts_path %>" class= "white">Espectáculos y Moda</a>
-        </li>
+    <ul id="cd-navigation">
+      <% if user_signed_in? %>
+      <li class="mini <%= 'active' if current_page?(edit_user_registration_path) %>">
+        <a href="<%= edit_user_registration_path(@user) %>">Mi perfil</a>
+      </li>
+      <li class=" mini gol <%= 'active' if current_page?(favorites_posts_path) %>"><a href="<%= favorites_posts_path %>">Mis favoritos</a></li>
+      <li class="mini"> <a href="<%= destroy_user_session_path %>" data-method='delete'>
+        Cerrar Sesión
+      </a></li>
 
+      <% if current_user && current_user.admin? %>
+      <li class= mini "<%= 'active' if current_page?(new_post_path) %>"><%= link_to 'Nuevo Post', new_post_path %></li>
+      <% end %>
+      <% else %>
+      <li class="mini"><a href="<%= new_user_session_path %>"> Iniciar Sesión </a></li>
+      <li class="mini"><%= link_to "iniciar sesión con Facebook", user_facebook_omniauth_authorize_path %></li>
+      <li class="mini"><a href="<%= new_user_registration_path %>"> Registrarse </a></li>
+      <% end %> 
 
-      </ul>
-      <ul class="nav navbar-nav">
-        <% if user_signed_in? %>
-        <li class="mini <%= 'active' if current_page?(edit_user_registration_path) %>">
-          <a href="<%= edit_user_registration_path(@user) %>">Mi perfil</a>
-        </li>
-        <li class=" mini gol <%= 'active' if current_page?(favorites_posts_path) %>"><a href="<%= favorites_posts_path %>">Mis favoritos</a></li>
-        <li class="mini"> <a href="<%= destroy_user_session_path %>" data-method='delete'>
-          Cerrar Sesión
-        </a></li>
+      <hr class="visible-sm visible-xs">
 
-        <% if current_user && current_user.admin? %>
-        <li class= mini "<%= 'active' if current_page?(new_post_path) %>"><%= link_to 'Nuevo Post', new_post_path %></li>
-        <% end %>
-        <% else %>
-        <li class="mini"><a href="<%= new_user_session_path %>"> Iniciar Sesión </a></li>
-        <li class="mini"><%= link_to "iniciar sesión con Facebook", user_facebook_omniauth_authorize_path %></li>
-        <li class="mini"><a href="<%= new_user_registration_path %>"> Registrarse </a></li>
-        <% end %> 
-      </ul>
-
-    </div>
-    <!-- /.navbar-collapse -->
-  </div>
-  <!-- /.container -->
-</nav>
-
-
-
-
-<div id= "banner" class="cover_<%=params[:action]%>">
-  <h1>MANTENTE INFORMADO</h1>
-    <div class="form-inline global-search">
-    <%= form_tag search_posts_path, method: :get, role: "search" do %>
-      <%= text_field_tag :search, params[:search], class: "form-control", id: "k", placeholder: "Qué estás buscando?" %>
-      <%= submit_tag "Buscar", name: nil, class: "btn btn-default", id: "s" %>
+    <li>
+      <%= form_tag search_posts_path, method: :get, role: "search" do %>
+      <%= text_field_tag :search, params[:search], class: "form-control formatito", id: "k", placeholder: "Buscar..." %>
+      </li>
+      <li>
+      <%= submit_tag "Buscar", name: nil, class: "button button_red hidden-sm hidden-xs", id: "s" %>
+      <%= submit_tag "Buscar", name: nil, class: "button button_red button_block visible-sm visible-xs", id: "s" %>
     <% end %>
+    </li>
+    </ul>
+  </nav> <!-- .cd-primary-nav -->
+</header> <!-- .cd-auto-hide-header -->
+
+<section class="cd-hero">
+  <div class="cd-hero-content">
+    <!-- your content here -->
   </div>
-</div>
+</section> <!-- .cd-hero -->
 
 
-<hr class="grey">
-<div id="tageo">
-<div class="container">
-	<ul>
-  <% tag_cloud Post.tag_counts.order('count DESC').limit(7), %w[s m l] do |tag, css_class| %>
+
+<nav class="cd-secondary-nav">
+  <ul>
+  <% Category.all.each do |category| %>
+        <li><%= link_to category.name, posts_path(category: category.name) %></li>
+        <% end %>
+  </ul>
+</nav> <!-- .cd-secondary-nav -->
+
+<main class="cd-main-content sub-nav-hero">
+  <div class="col-sm-10">
+    <%= yield %>
+  </div>
+  <div class="col-sm-2" id="tagin">
+      <ul>
+  <% tag_cloud Post.tag_counts.order('count DESC').limit(13), %w[s m l] do |tag, css_class| %>
     <li> <%= link_to tag.name, tag_path(tag.name), class: css_class %> </li>
   <% end %>
-	</ul>
-</div>
-</div>
+  </ul>
+  </div>
+</main>
 
 
-<%= yield %>
+
+
+
+
+
+
+
+
 
 
 
