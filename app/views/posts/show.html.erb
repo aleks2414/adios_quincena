@@ -14,7 +14,7 @@
   <div class="col-md-9">
   <%= link_to @post.url do %>
     <div class="imagen">
-          <%= image_tag src="prueba.jpg" %>
+          <%= image_tag(@post.image_url) if @post.image? %>
     </div>
     <% end %>
     </div>

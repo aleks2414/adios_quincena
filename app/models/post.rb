@@ -8,6 +8,8 @@ class Post < ActiveRecord::Base
     is_impressionable
     acts_as_votable
 
+  mount_uploader :image # Tells rails to use this uploader for this model.
+
     
    before_save do
   self.calificacion = self.amazon + self.calidad + self.garantia + self.precio + self.precio
