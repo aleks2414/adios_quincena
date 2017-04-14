@@ -48,7 +48,7 @@
           </div>
 
           <h3><%= @post.calificacion %></h3>
-      <p><%= @post.description %></p>
+      <p><%= @post.description.truncate(400) %></p>
 
       <button class="button button_red button_block">$<%= @post.price %>.00 <br> Chécalo Ahora</button>
     </div>

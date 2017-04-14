@@ -44,56 +44,6 @@
     <%= f.file_field :image %>
   </div>
 
-  <div class="field">
-    <%= f.label :pro1 %><br>
-    <%= f.text_field :pro1 %>
-  </div>
-
-  <div class="field">
-    <%= f.label :pro2 %><br>
-    <%= f.text_field :pro2 %>
-  </div>
-
-  <div class="field">
-    <%= f.label :pro3 %><br>
-    <%= f.text_field :pro3 %>
-  </div>
-
-  <div class="field">
-    <%= f.label :pro4 %><br>
-    <%= f.text_field :pro4 %>
-  </div>
-
-  <div class="field">
-    <%= f.label :pro5 %><br>
-    <%= f.text_field :pro5 %>
-  </div>
-
-  <div class="field">
-    <%= f.label :con1 %><br>
-    <%= f.text_field :con1 %>
-  </div>
-
-  <div class="field">
-    <%= f.label :con2 %><br>
-    <%= f.text_field :con2 %>
-  </div>
-
-  <div class="field">
-    <%= f.label :con3 %><br>
-    <%= f.text_field :con3 %>
-  </div>
-
-  <div class="field">
-    <%= f.label :con4 %><br>
-    <%= f.text_field :con4 %>
-  </div>
-
-  <div class="field">
-    <%= f.label :con5 %><br>
-    <%= f.text_field :con5 %>
-  </div>
-
 
 
   <div class="field">
@@ -131,6 +81,7 @@
   <%= f.label :tag_list, "Tags (separated by commas)" %><br />
   <%= f.text_field(:tag_list, value: @post.tag_list.join(","))%>
   </div>
+  <br><br>
   <div class="actions">
     <%= f.submit %>
   </div>

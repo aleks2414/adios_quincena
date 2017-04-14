@@ -44,15 +44,18 @@ end
   # GET /posts/1
   # GET /posts/1.json
   def show
+    render layout: "else"
   end
 
   # GET /posts/new
   def new
     @post = Post.new
+    render layout: "vacio"
   end
 
   # GET /posts/1/edit
   def edit
+    render layout: "vacio"
   end
 
   # POST /posts
