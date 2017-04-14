@@ -602,6 +602,9 @@ Intro Section
   				border-bottom-right-radius:20px;
 					display:block;
     			overflow: hidden;
+    			img {
+    				width: 100%;
+    			}
     	}
     	h4 {
     		position: absolute;
@@ -661,5 +664,115 @@ Intro Section
     	}
 		}
 	}
+}
+
+#breadcrum {
+	text-align: center;
+	ul {
+		margin-top: 3rem;
+		list-style: none;
+		padding: .5rem 0;
+    li {
+    	display: inline;
+      a {
+        color: #747c83;
+        font-size: 1.4rem;
+  &:hover {
+    color: $red;
+    text-decoration: none;
+  }
+      }
+    }
+	}
+}
+
+#chow {
+	.imagen {
+		width: 100%;
+		height:430px;
+		overflow: hidden;
+		img {
+			width: 100%;
+		}
+	}
+	h2 {
+		text-transform: uppercase;
+		font-size: 30px;
+	}
+	p {
+		margin-top: 2rem;
+		font-size: 17px;
+	}
+	h3 {
+		padding: 10px;
+    		background-color: $grey;
+    		color: white;
+    		border-radius: 50%;
+    		display: inline-block;
+    		
+    		font-size: 15px;
+    		-webkit-box-shadow: 2px 2px 1px rgba(46,133,155,0.04);
+    		box-shadow: 2px 2px 1px rgba(46,133,155,0.04);
+	}
+	.button {
+		font-size: 20px;
+	}
+}
+
+.face {
+    background-color: #3b5998;
+    color: white;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    padding: 10px;
+    margin-right: .5rem;
+    border-radius: 25px;
+    &:hover {
+    opacity: .8;
+    }
+  }
+    .twitter {
+    background-color: #55acee;
+    color: white;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    padding: 10px;
+    margin-right: .5rem;
+    border-radius: 25px;
+    &:hover {
+    opacity: .8;
+    }
+  }
+    .insta {
+    background-color: #e95950;
+    color: white;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    padding: 10px;
+    margin-right: .5rem;
+    border-radius: 25px;
+    &:hover {
+    opacity: .8;
+    }
+  }
+    .you {
+    background-color: #bb0000;
+    color: white;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    padding: 10px;
+    margin-right: .5rem;
+    border-radius: 25px;
+    &:hover {
+    opacity: .8;
+    }
+  }
+
+#share {
+	margin-top: 3rem;
 }
 
