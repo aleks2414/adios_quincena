@@ -12,73 +12,90 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label :Título_del_post %><br>
+    (Causar atención con nombre divertido, sencillo que invite a entrar)
     <%= f.text_field :title %>
-  </div>
 
+  </div>
+<br>
   <div class="field">
-  <%= f.label :category %><br>
+  <%= f.label :Categoría %><br>
     <%= f.collection_select(:category_id, Category.all, :id, :name, 
-    { prompt: 'Select a category' }, { id: 'category-select' }) %> <br>
-    <%= f.label :subcategory %><br>
+    { prompt: 'Select a category' }, { id: 'category-select' }) %> <br><br>
+    <%= f.label :Subcategoría %><br>
   <%= f.grouped_collection_select :subcategory_id, Category.all, :subcategories, 
     :name, :id, :name, { include_blank: 'Select a sub category' }, { id: 'subcategory-select' } %>
   </div>
+  <br>
   <div class="field">
-    <%= f.label :description %><br>
+    <%= f.label :Descripción %><br>
+    (Descripción divertida, corta, de no más de 500 caracteres)
     <%= f.text_area :description %>
   </div>
 
   <div class="field">
     <%= f.label :url %><br>
+    (Copiar tal cual el url del sitio, incluyendo http://)
     <%= f.text_field :url %>
   </div>
 
   <div class="field">
-    <%= f.label :link_review %><br>
+    <%= f.label :Comentarios_en_amazon %><br>
+    (Copiar tal cual el url de los comentarios, incluyendo http://)
     <%= f.text_field :link_review %>
   </div>
 
   <div class="field">
-    <%= f.label :image %><br>
+    <%= f.label :Imagen %><br>
+    (Adjuntar imagen de buena calidad, que muestre el lado divertido del producto)
     <%= f.file_field :image %>
   </div>
 
+<hr>
 
-
+<br><br><br><br>
+(Son las calificaciones del producto con base en la calificación que tiene en amazon, la calidad, la garantía de satisfacción, la relación precio-beneficio y el nivel de innovación)
   <div class="field">
     <%= f.label :amazon %><br>
-    <%= f.text_field :amazon %>
+    (Calificación del 1 - 20)
+    <%= f.number_field :amazon, min: 1, max: 20, step: 1 %>
   </div>
 
   <div class="field">
     <%= f.label :calidad %><br>
-    <%= f.text_field :calidad %>
+    (Calificación del 1 - 20)
+    <%= f.number_field :calidad, min: 1, max: 20, step: 1 %>
   </div>
 
   <div class="field">
     <%= f.label :garantia %><br>
-    <%= f.text_field :garantia %>
+    (Calificación del 1 - 20)
+    <%= f.number_field :garantia, min: 1, max: 20, step: 1 %>
   </div>
 
   <div class="field">
     <%= f.label :precio %><br>
-    <%= f.text_field :precio %>
+    (Calificación del 1 - 20)
+    <%= f.number_field :precio, min: 1, max: 20, step: 1 %>
   </div>
 
   <div class="field">
     <%= f.label :innovacion %><br>
-    <%= f.text_field :innovacion %>
+    (Calificación del 1 - 20)
+    <%= f.number_field :innovacion, min: 1, max: 20, step: 1 %>
   </div>
+  <br><br>
+  <hr>
 
   <div class="field">
-    <%= f.label :price %><br>
+    <%= f.label :Precio %><br>
     <%= f.text_field :price %>
   </div>
 
-
+<br>
   <div class="field">
-  <%= f.label :tag_list, "Tags (separated by commas)" %><br />
+  <%= f.label :tag_list, "Tags (separated by commas)" %><br/>
+  (Incluir máximo <strong>4</strong> tags separados por comas ,)
   <%= f.text_field(:tag_list, value: @post.tag_list.join(","))%>
   </div>
   <br><br>

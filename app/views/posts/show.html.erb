@@ -2,7 +2,7 @@
     <ul>
       <li><%= link_to "Inicio /", root_path %></li>
       <li><%= link_to "#{@post.category.name} /", posts_path(category: @post.category.name) %></li>
-      <!-- <li><%#= link_to @post.subcategory.name, posts_path(subcategory: @post.subcategory.name) %></li> -->
+      <li><%= link_to "#{@post.subcategory.name} /", posts_path(subcategory: @post.subcategory.name) %></li>
       <li><%= link_to "#{@post.title}" %></li>
     </ul>
 </div>
@@ -50,7 +50,12 @@
           <h3><%= @post.calificacion %></h3>
       <p><%= @post.description.truncate(400) %></p>
 
-      <button class="button button_red button_block">$<%= @post.price %>.00 <br> Chécalo Ahora</button>
+      <a href="<%= @post.url %>"><button class="button button_red button_block">$<%= @post.price %>.00 <br> Chécalo Ahora</button></a>
+
+      <%- if @post.link_review.present? %>
+      <a href="<%= @post.link_review %>"><button class="button button_red button_block">Checa las reseñas</button></a>
+      <% end -%>
+      
     </div>
     </div>
   </div>

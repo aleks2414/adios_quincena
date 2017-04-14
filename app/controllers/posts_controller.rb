@@ -37,6 +37,13 @@ def index
     @posts = Post.where(category_id: @category_id).order("created_at DESC")
   end
 
+    if params[:subcategory].blank?
+    @posts = Post.all.order("created_at DESC")
+  else
+    @category_id = Subcategory.find_by(name: params[:subcategory]).id
+    @posts = Post.where(subcategory_id: @subcategory_id).order("created_at DESC")
+  end
+
   @posts = @posts.page params[:page]
 end
 
