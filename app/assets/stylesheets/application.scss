@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  *= require jquery-ui
- *= require commontator/application
+ *= require 'css3-progress-bar'
  */
 
 @import "bootstrap-sprockets";
@@ -579,7 +579,7 @@ Intro Section
 		padding: 0 1rem;
 		margin-bottom: 3rem;
 		.boxes {
-			height: 450px;
+			height: 470px;
 			background-color: white;
 			padding: 2rem;
 			border-radius: 11px;
@@ -591,7 +591,8 @@ Intro Section
     			position: absolute;
     			left: 45px;
     			top: 35px;
-    			font-size: 17px;
+    			font-size: 22px;
+    			color: #ff1d1d;
     		}
     	}
     	.imagen {
@@ -602,12 +603,19 @@ Intro Section
 					display:block;
     			overflow: hidden;
     	}
+    	h4 {
+    		position: absolute;
+    		top: 150px;
+    		right: 30px;
+    		padding: 10px;
+    		background-color: white;
+    	}
     	h6 {
     		padding: 5px;
     		display: inline;
     		color: $red;
     		border: 1px solid $red;
-    		margin-top: 15px; 
+    		margin-top: 1px; 
     		position: absolute;
     	}
     	h2 {
@@ -616,6 +624,19 @@ Intro Section
     		font-size: 16px;
     		color: black;
     	}
+    	h3 {
+    		padding: 10px;
+    		background-color: $grey;
+    		color: white;
+    		border-radius: 50%;
+    		position: absolute;
+    		display: block;
+    		font-size: 15px;
+    		right: 35px;
+    		bottom: 10px;
+    		-webkit-box-shadow: 2px 2px 1px rgba(46,133,155,0.04);
+    		box-shadow: 2px 2px 1px rgba(46,133,155,0.04);
+    	}
     	p {
     		color: $light_grey;
     		font-size: 12px;
@@ -623,6 +644,10 @@ Intro Section
     	}
     	h4 {
     		font-size: 20px;
+    	}
+    	h1 {
+    		font-size: 20px;
+    		color: grey;
     	}
     	.finales {
     		h5 { 

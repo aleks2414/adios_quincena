@@ -11,14 +11,14 @@
             <% if current_user.liked? post %>
             <div class="derecho">
               <%= link_to dislike_post_path(post), method: :put do %>
-              <span class="fa fa-star-o"></span>
+              <span class="fa fa-star"></span>
               <%#= post.get_downvotes.size %>
               <% end %>
             </div>
             <% else %>
             <div class="votable">
               <%= link_to like_post_path(post), method: :put do %>
-              <span class="fa fa-star"></span>
+              <span class="fa fa-star-o"></span>
               <%#= post.get_upvotes.size %>
               <% end %>
             </div>
@@ -26,7 +26,7 @@
             <% else %>
             <div class="votable">
               <%= link_to new_user_session_path do %>
-              <span class="fa fa-star-o"></span>
+              <span class="fa fa-star"></span>
               <% end %>
             </div>
             <% end %>
@@ -37,15 +37,19 @@
         <div class="imagen">
           <%= image_tag src="prueba.jpg" %>
         </div>
+        <h4>$ <%= post.price %> <span class="fa fa-money"></span></h4>
+        <hr>
         <h6><%= link_to post.category.name, posts_path(category: post.category.name) %></h6>
-        <h2><%= post.title %></h2>
-        <p><%= post.description.truncate(200) %></p>
-        <h4><%= post.calificacion %></h4>
+        <%= link_to post do %>
+        <h2><%= post.title.truncate(60) %></h2>
+        <p><%= post.description.truncate(120) %></p>
+        <% end %>
+        
         <div class="finales">
           <ul>
-            <li><h5><span class="fa fa-tasks"></span>45%</h5></li>
             <li><h5>#<%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join('    #') %></h5></li>
           </ul>
+          <h3><%= post.calificacion %></h3>
         </div>
         <% end %>
       </div>
@@ -53,107 +57,9 @@
   <% end %>
 </div>
 
-<div class="grid visible-md visible-lg">
-<% @posts.each do |post| %>
-  <div class="grid-item">
-    <div id="marco1">
-          
-          <!-- imagen -->
-          <div class="img-card">
-            <%= link_to post do %>
-            <%= image_tag post.image.to_s %>
-            <% end %>
-          </div>
-          <div class="cate">
-            <h6><%= post.category %></h6>
-          </div>
-          <div class="taging">
-            
-          </div>
-          <div class="content">
-            <%= link_to post do %>
-            <h4 class="card-title"><%= post.title.truncate(60) %></h4>
-            <% end %>
-            <div class="back"><%= post.description.truncate(90) %></div>
-          </div>
-          <div class="news">
-            <ul>
-              <li>
-                <h6 class="green2"><%= post.title %></h6>
-              </li>
-              <li>
-                <h6><%= post.try(:created_at).strftime(" %b-%d-%Y") %> </h6>
-              </li>
-            </ul>
-            </div>
-        </div>
-
-  </div>
-  <% end %>
-</div>
 
 
-<div class="visible-xs visible-sm">
-  <% @posts.each do |post| %>
-      <div class="col-xs-12 col-sm-6 col-md-3">
-        <div id="marco3">
-          <div class="collec">
-            <% if user_signed_in? %>
-            <% if current_user.liked? post %>
-            <div class="derecho">
-              <%= link_to dislike_post_path(post), method: :put do %>
-              <h5>[collect]</h5>
-              <%#= post.get_downvotes.size %>
-              <% end %>
-            </div>
-            <% else %>
-            <div class="votable">
-              <%= link_to like_post_path(post), method: :put do %>
-              <h5>[collect]</h5>
-              <%#= post.get_upvotes.size %>
-              <% end %>
-            </div>
-            <% end %>
-            <% else %>
-            <div class="votable">
-              <%= link_to new_user_session_path do %>
-              <h5>[collect]</h5>
-              <% end %>
-            </div>
-            <% end %>
-          </div>
-          <!-- imagen -->
-          <div class="img-card">
-            <%= link_to post do %>
-            <%= image_tag post.image.to_s %>
-            <% end %>
-          </div>
-          <div class="cate">
-            <h6><%= post.category %></h6>
-          </div>
-          <div class="taging">
-            <h6 class="category">#<%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join('    #') %></h6>
-          </div>
-          <div class="content">
-            <%= link_to post do %>
-            <h4 class="card-title"><%= post.title.truncate(60) %></h4>
-            <% end %>
-            <div class="back"><%= post.description.truncate(90) %></div>
-          </div>
-          <div class="news">
-            <ul>
-              <li>
-                <h6 class="green2"><%= post.title %></h6>
-              </li>
-              <li>
-                <h6><%= post.try(:created_at).strftime(" %b-%d-%Y") %> </h6>
-              </li>
-            </ul>
-            </div>
-        </div>
-      </div>
-      <% end %>
-</div>
+
 
 
 

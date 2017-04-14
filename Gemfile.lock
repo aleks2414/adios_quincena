@@ -65,6 +65,8 @@ GEM
       jquery-rails
       rails (>= 3.1)
     concurrent-ruby (1.0.5)
+    css3-progress-bar-rails (0.5.1)
+      rails (>= 3.1)
     debug_inspector (0.0.2)
     devise (4.2.1)
       bcrypt (~> 3.0)
@@ -237,6 +239,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 4.1.0)
   commontator
+  css3-progress-bar-rails
   devise
   friendly_id (~> 5.1.0)
   grabbit

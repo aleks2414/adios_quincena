@@ -36,6 +36,7 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'searchkick'
 gem 'omniauth-facebook'
 gem 'rename'
+gem 'css3-progress-bar-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
