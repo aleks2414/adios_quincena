@@ -690,7 +690,7 @@ Intro Section
 #chow {
 	.imagen {
 		width: 100%;
-		height:430px;
+		height:630px;
 		overflow: hidden;
 		img {
 			width: 100%;
@@ -857,4 +857,12 @@ Intro Section
 			margin: 2rem 5px;
 		}
 	}
+}
+
+#titulo {
+  text-align: center;
+  text-transform: uppercase;
+  h1 {
+    font-size: 18px;
+  }
 }

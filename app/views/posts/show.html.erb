@@ -46,8 +46,10 @@
             </div>
             <% end %>
           </div>
-
-          <h3><%= @post.calificacion %></h3>
+      
+        <h5><%= link_to @post.category.name, posts_path(category: @post.category.name) %></h5>
+        <h6><%= link_to @post.subcategory.name, posts_path(subcategory: @post.subcategory.name) %></h6>
+      <h3><%= @post.calificacion %></h3>
       <p><%= @post.description.truncate(400) %></p>
 
       <a href="<%= @post.url %>"><button class="button button_red button_block">$<%= @post.price %>.00 <br> Chécalo Ahora</button></a>
@@ -127,3 +129,73 @@ return false">
 <% end %>
 </div>
 </div>
+
+<div id="titulo">
+<div class="container">
+<div class="row">
+<h1>Artículos relacionados...</h1>
+</div>
+</div>
+</div>
+<br><br><br>
+
+
+<div id="tres">
+  <% @related_posts.each do |post| %>
+    <div class="col-md-4 col-sm-6 nue">
+      <div class="boxes">
+
+      <div class="collec">
+            <% if user_signed_in? %>
+            <% if current_user.liked? post %>
+            <div class="derecho">
+              <%= link_to dislike_post_path(post), method: :put do %>
+              <span class="fa fa-star"></span>
+              <%#= post.get_downvotes.size %>
+              <% end %>
+            </div>
+            <% else %>
+            <div class="votable">
+              <%= link_to like_post_path(post), method: :put do %>
+              <span class="fa fa-star-o"></span>
+              <%#= post.get_upvotes.size %>
+              <% end %>
+            </div>
+            <% end %>
+            <% else %>
+            <div class="votable">
+              <%= link_to new_user_session_path do %>
+              <span class="fa fa-star"></span>
+              <% end %>
+            </div>
+            <% end %>
+          </div>
+
+
+          <%= link_to post.url do %>
+        <div class="imagen">
+          <%= image_tag(post.image_url) if post.image? %>
+        </div>
+        <h4>$ <%= post.price %> <span class="fa fa-money"></span></h4>
+        <hr>
+        <h6><%= link_to post.category.name, posts_path(category: post.category.name) %></h6>
+        <%= link_to post do %>
+        <h2><%= post.title.truncate(60) %></h2>
+        <p><%= post.description.truncate(120) %></p>
+        <% end %>
+        
+        <div class="finales">
+          <ul>
+            <li><h5>#<%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join('    #') %></h5></li>
+          </ul>
+          <h3><%= post.calificacion %></h3>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+
+

@@ -40,7 +40,7 @@ def index
     if params[:subcategory].blank?
     @posts = Post.all.order("created_at DESC")
   else
-    @category_id = Subcategory.find_by(name: params[:subcategory]).id
+    @subcategory_id = Subcategory.find_by(name: params[:subcategory]).id
     @posts = Post.where(subcategory_id: @subcategory_id).order("created_at DESC")
   end
 
@@ -51,6 +51,8 @@ end
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @posts = Post.find(params[:id])
+    @related_posts = Post.tagged_with(@posts.tag_list, any: true).limit(6)
     render layout: "else"
   end
 
