@@ -35,7 +35,9 @@
 
           <%= link_to post.url do %>
         <div class="imagen">
+       <%= link_to post.url, target: :_blank do %>
           <%= image_tag(post.image_url) if post.image? %>
+      <% end %>
         </div>
         <h4>$ <%= post.price %> <span class="fa fa-money"></span></h4>
         <hr>

@@ -14,7 +14,9 @@
   <div class="col-md-9">
   <%= link_to @post.url do %>
     <div class="imagen">
+      <%= link_to @post.url, target: :_blank do %>
           <%= image_tag(@post.image_url) if @post.image? %>
+      <% end %>
     </div>
     <% end %>
     </div>
@@ -52,10 +54,10 @@
       <h3><%= @post.calificacion %></h3>
       <p><%= @post.description.truncate(400) %></p>
 
-      <a href="<%= @post.url %>"><button class="button button_red button_block">$<%= @post.price %>.00 <br> Chécalo Ahora</button></a>
+      <a href="<%= @post.url %>", target= "_blank" ><button class="button button_red button_block">$<%= @post.price %>.00 <br> Chécalo Ahora</button></a>
 
       <%- if @post.link_review.present? %>
-      <a href="<%= @post.link_review %>"><button class="button button_red button_block">Checa las reseñas</button></a>
+      <a href="<%= @post.link_review %>", target= "_blank"><button class="button button_red button_block">Checa las reseñas</button></a>
       <% end -%>
       
     </div>
