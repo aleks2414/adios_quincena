@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
     is_impressionable
     acts_as_votable
 
-  mount_uploader :image # Tells rails to use this uploader for this model.
+  mount_uploader :image, ImageUploader # Tells rails to use this uploader for this model.
 
     
    before_save do
