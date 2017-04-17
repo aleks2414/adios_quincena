@@ -39,6 +39,7 @@ gem 'rename'
 gem 'css3-progress-bar-rails'
 gem "figaro"
 gem "fog"
+gem "mini_magick"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
