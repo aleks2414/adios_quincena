@@ -24,28 +24,24 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
 def index
-  if params[:tag]
-    @posts = Post.tagged_with(params[:tag])
-  else
-    @posts = Post.order("created_at desc")
-  end
 
-  if params[:category].blank?
-    @posts = Post.all.order("created_at DESC")
-  else
+  if params[:tag]
+  @posts = Post.tagged_with(params[:tag])
+elsif params[:category]
     @category_id = Category.find_by(name: params[:category]).id
     @posts = Post.where(category_id: @category_id).order("created_at DESC")
-  end
-
-    if params[:subcategory].blank?
-    @posts = Post.all.order("created_at DESC")
-  else
+elsif params[:subcategory]
     @subcategory_id = Subcategory.find_by(name: params[:subcategory]).id
     @posts = Post.where(subcategory_id: @subcategory_id).order("created_at DESC")
-  end
+else
+    @posts = Post.all.order("created_at DESC")
+end
+
 
   @posts = @posts.page params[:page]
 end
+
+
 
 
   # GET /posts/1
