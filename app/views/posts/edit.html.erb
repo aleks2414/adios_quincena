@@ -3,7 +3,111 @@
 		<div id="formario">
 <h1>Editar Post</h1>
 
-<%= render 'form' %>
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Título_del_post %><br>
+    (Causar atención con nombre divertido, sencillo que invite a entrar)
+    <%= f.text_field :title %>
+
+  </div>
+<br>
+  <div class="field">
+  <%= f.label :Categoría %><br>
+    <%= f.collection_select(:category_id, Category.all, :id, :name, 
+    { prompt: 'Select a category' }, { id: 'category-select' }) %> <br><br>
+    <%= f.label :Subcategoría %><br>
+  <%= f.grouped_collection_select :subcategory_id, Category.all, :subcategories, 
+    :name, :id, :name, { include_blank: 'Select a sub category' }, { id: 'subcategory-select' } %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.label :Descripción %><br>
+    (Descripción divertida, corta, de no más de 500 caracteres)
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :url %><br>
+    (Copiar tal cual el url del sitio, incluyendo http://)
+    <%= f.text_field :url %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Comentarios_en_amazon %><br>
+    (Copiar tal cual el url de los comentarios, incluyendo http://)
+    <%= f.text_field :link_review %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Imagen %><br>
+    (Adjuntar imagen de buena calidad, que muestre el lado divertido del producto)
+    <%= f.file_field :image %>
+  </div>
+
+<hr>
+
+<br><br><br><br>
+(Son las calificaciones del producto con base en la calificación que tiene en amazon, la calidad, la garantía de satisfacción, la relación precio-beneficio y el nivel de innovación)
+  <div class="field">
+    <%= f.label :amazon %><br>
+    (Calificación del 1 - 20)
+    <%= f.number_field :amazon, min: 1, max: 20, step: 1 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :calidad %><br>
+    (Calificación del 1 - 20)
+    <%= f.number_field :calidad, min: 1, max: 20, step: 1 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :garantia %><br>
+    (Calificación del 1 - 20)
+    <%= f.number_field :garantia, min: 1, max: 20, step: 1 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :precio %><br>
+    (Calificación del 1 - 20)
+    <%= f.number_field :precio, min: 1, max: 20, step: 1 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :innovacion %><br>
+    (Calificación del 1 - 20)
+    <%= f.number_field :innovacion, min: 1, max: 20, step: 1 %>
+  </div>
+  <br><br>
+  <hr>
+
+  <div class="field">
+    <%= f.label :Precio %><br>
+    <%= f.text_field :price %>
+  </div>
+
+<br>
+  <div class="field">
+  <%= f.label :tag_list, "Tags (separated by commas)" %><br/>
+  (Incluir máximo <strong>4</strong> tags separados por comas ,)
+  <%= f.text_field(:tag_list, value: @post.tag_list.join(","))%>
+  </div>
+  <br><br>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
 
 <%= link_to 'Ver', @post %> |
 <%= link_to 'Atrás', posts_path %>
