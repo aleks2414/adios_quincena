@@ -16,6 +16,13 @@ class Post < ActiveRecord::Base
 
     
    before_save do
+
+  self.amazon = rand(16..20)
+  self.calidad = rand(16..20)
+  self.garantia = rand(16..20)
+  self.precio = rand(16..20)
+  self.innovacion = rand(16..20)
+    
   self.calificacion = self.amazon + self.calidad + self.garantia + self.precio + self.precio
   end
 
