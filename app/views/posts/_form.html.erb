@@ -12,6 +12,23 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :url %><br>
+    (Copiar tal cual el url del sitio, incluyendo http://)
+    <%= f.text_field :url %>
+  </div>
+
+  <br><br>
+
+
+  <div class="field">
+    <%= f.label :Precio %><br>
+    <%= f.text_field :price %>
+  </div>
+
+  <br><br>
+
+
+  <div class="field">
     <%= f.label :Título_del_post %><br>
     (Causar atención con nombre divertido, sencillo que invite a entrar)
     <%= f.text_field :title %>
@@ -28,17 +45,7 @@
   </div>
   <br>
 
-  <div class="field">
-    <%= f.label :url %><br>
-    (Copiar tal cual el url del sitio, incluyendo http://)
-    <%= f.text_field :url %>
-  </div>
 
-  <div class="field">
-    <%= f.label :Comentarios_en_amazon %><br>
-    (Copiar tal cual el url de los comentarios, incluyendo http://)
-    <%= f.text_field :link_review %>
-  </div>
 
   <div class="field">
     <%= f.label :Imagen %><br>
@@ -48,13 +55,7 @@
 
 <hr>
 
-<br><br><br><br>
 
-
-  <div class="field">
-    <%= f.label :Precio %><br>
-    <%= f.text_field :price %>
-  </div>
 
 <br>
   <div class="field">
