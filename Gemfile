@@ -40,6 +40,11 @@ gem 'css3-progress-bar-rails'
 gem "figaro"
 gem "fog"
 gem "mini_magick"
+gem 'meta-tags'
+
+group :development do
+  gem 'rails_real_favicon'
+end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -49,6 +49,13 @@ end
   def show
     @posts = Post.find(params[:id])
     @related_posts = Post.tagged_with(@posts.tag_list, any: true).limit(6)
+
+    prepare_meta_tags(title: @post.title,
+                      description: @post.description.truncate(50), 
+                      keywords: @post.tag_list.join(" "),
+                      image: @post.image
+      )
+
     render layout: "else"
   end
 
