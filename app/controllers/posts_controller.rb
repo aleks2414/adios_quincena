@@ -53,7 +53,22 @@ end
     prepare_meta_tags(title: @post.title,
                       description: @post.description.truncate(50), 
                       keywords: @post.tag_list.join(" "),
-                      image: @post.image
+                      image: @post.image,
+                      og: {
+        url: request.original_url,
+        site_name: @post.title,
+        title: @post.title,
+        image: @post.image,
+        description: @post.description,
+        type: 'website'
+      },
+        twitter: {
+        site_name: @post.title,
+        site: '@adiosquincena',
+        card: 'summary',
+        description: @post.description,
+        image: @post.image
+      }
       )
 
     render layout: "else"
